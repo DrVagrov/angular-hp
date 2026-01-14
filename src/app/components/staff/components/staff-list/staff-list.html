@@ -30,6 +30,7 @@
       @for (character of staff(); track character.id) {
         <article
           (click)="goToCharacterDetail(character.id)"
+          (mouseenter)="playHoverSound()"
           class="hp-card"
           [class.hp-card--gryffindor]="character.house === 'Gryffindor'"
           [class.hp-card--slytherin]="character.house === 'Slytherin'"
