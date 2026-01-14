@@ -17,15 +17,17 @@ export class CharactersList {
   characters = input.required<CharacterModel[]>();
   hoverVolume = 0.7;
   private hoverAudio = new Audio('assets/audio/pickupCoin.wav');
+  private hoverDeadAudio = new Audio('assets/audio/pickupCoinDown.wav');
   
   protected goToCharacterDetail(id: string, house?: string) {
     this.router.navigate(['/characters', id]);
   }
 
-  protected playHoverSound() {
-    this.hoverAudio.volume = this.clampVolume(this.hoverVolume);
-    this.hoverAudio.currentTime = 0;
-    void this.hoverAudio.play();
+  protected playHoverSound(alive?: boolean) {
+    const audio = alive === false ? this.hoverDeadAudio : this.hoverAudio;
+    audio.volume = this.clampVolume(this.hoverVolume);
+    audio.currentTime = 0;
+    void audio.play();
   }
 
 

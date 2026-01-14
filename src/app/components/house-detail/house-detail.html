@@ -1,10 +1,8 @@
 <section class="hp-characters">
   <header class="hp-characters__header">
     <div class="hp-characters__title">
-      <h1>{{ 'Harry Potter' | suffix: 'Characters' }}</h1>
-      <p class="hp-characters__subtitle">
-        Une galerie immersive : portraits, maisons, baguettes, patronus.
-      </p>
+      <h1>{{ houseTitle() }}</h1>
+      <p class="hp-characters__subtitle">{{ houseMotto() }}</p>
     </div>
 
     @if (characters().length > 0) {
@@ -30,6 +28,7 @@
       @for (character of characters(); track character.id) {
         <article
           (click)="goToCharacterDetail(character.id)"
+          (mouseenter)="playHoverSound(character.alive)"
           class="hp-card"
           appHoverCard
           [class.hp-card--gryffindor]="character.house === 'Gryffindor'"

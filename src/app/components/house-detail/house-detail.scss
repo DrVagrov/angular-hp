@@ -1,0 +1,15 @@
+:host .hp-characters__header {
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+:host .hp-characters__title {
+  width: 100%;
+}
+
+:host .hp-characters__subtitle {
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}

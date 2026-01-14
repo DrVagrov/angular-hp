@@ -5,11 +5,12 @@ import {StaffService} from '../../shared/services/staff/staffs.service';
 import {httpResource} from '@angular/common/http';
 import {environment} from '../../../environments/environment';
 import { ActivatedRoute } from '@angular/router';
+import { CharactersList } from '../characters/components/characters-list/characters-list';
 
 @Component({
   selector: 'app-staff',
   imports: [
-    StaffList
+    CharactersList
   ],
   templateUrl: './staff.html',
   styleUrl: './staff.scss',
