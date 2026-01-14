@@ -1,0 +1,10 @@
+{{ section() | suffix: breadcrumb() }}
+<details class="hp-characters__add">
+  <summary class="hp-characters__add-summary">Add a character</summary>
+  <app-add-character />
+</details>
+<app-characters-list
+  appHoverCard
+  [characters]="characters()"
+/>
+

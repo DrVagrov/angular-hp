@@ -1,0 +1,149 @@
+<section class="hp-add-character">
+  <header class="hp-add-character__header">
+    <h1>Add Character</h1>
+    <p>Fill every field from the character model.</p>
+  </header>
+
+  <form (ngSubmit)="submit()" class="hp-add-character__form">
+    
+    <div class="hp-field">
+      <label class="hp-field__label" for="name">Name</label>
+      <input class="hp-field__control" id="name" name="name" type="text" [(ngModel)]="name" />
+    </div>
+
+    <div class="hp-field">
+      <label class="hp-field__label" for="alternate_names">Alternate names</label>
+      <textarea class="hp-field__control" id="alternate_names" name="alternate_names" rows="2" placeholder="Comma-separated"></textarea>
+    </div>
+
+    <div class="hp-field">
+      <label class="hp-field__label" for="species">Species</label>
+      <select class="hp-field__control" id="species" name="species">
+        <option value="">Select a species</option>
+        @for (type of speciesOptions; track type) {
+          <option [value]="type">{{ type }}</option>
+        }
+      </select>
+    </div>
+
+    <div class="hp-field">
+      <label class="hp-field__label" for="gender">Gender</label>
+      <select class="hp-field__control" id="gender" name="gender">
+        <option value="">Select a gender</option>
+        @for (gender of genders; track gender) {
+          <option [value]="gender">{{ gender }}</option>
+        }
+      </select>
+    </div>
+
+    <div class="hp-field">
+      <label class="hp-field__label" for="house">House</label>
+      <select class="hp-field__control" id="house" name="house">
+        <option value="">Select a house</option>
+        @for (house of houses; track house) {
+          <option [value]="house">{{ house }}</option>
+        }
+      </select>
+    </div>
+
+    <div class="hp-field">
+      <label class="hp-field__label" for="dateOfBirth">Date of birth</label>
+      <input class="hp-field__control" id="dateOfBirth" name="dateOfBirth" type="date" />
+    </div>
+
+    <div class="hp-field">
+      <label class="hp-field__label" for="yearOfBirth">Year of birth</label>
+      <input class="hp-field__control" id="yearOfBirth" name="yearOfBirth" type="number" />
+    </div>
+
+    <div class="hp-field">
+      <label class="hp-field__label" for="wizard">Wizard</label>
+      <input class="hp-field__control" id="wizard" name="wizard" type="checkbox" />
+    </div>
+
+    <div class="hp-field">
+      <label class="hp-field__label" for="ancestry">Ancestry</label>
+      <input class="hp-field__control" id="ancestry" name="ancestry" type="text" />
+    </div>
+
+    <div class="hp-field">
+      <label class="hp-field__label" for="eyeColour">Eye colour</label>
+      <input class="hp-field__control" id="eyeColour" name="eyeColour" type="text" />
+    </div>
+
+    <div class="hp-field">
+      <label class="hp-field__label" for="hairColour">Hair colour</label>
+      <input class="hp-field__control" id="hairColour" name="hairColour" type="text" />
+    </div>
+
+    <fieldset class="hp-fieldset">
+      <legend class="hp-fieldset__legend">Wand</legend>
+
+      <div class="hp-field">
+        <label class="hp-field__label" for="wandWood">Wood</label>
+        <input class="hp-field__control" id="wandWood" name="wand.wood" type="text" />
+      </div>
+
+      <div class="hp-field">
+        <label class="hp-field__label" for="wandCore">Core</label>
+        <input class="hp-field__control" id="wandCore" name="wand.core" type="text" />
+      </div>
+
+      <div class="hp-field">
+        <label class="hp-field__label" for="wandLength">Length</label>
+        <input class="hp-field__control" id="wandLength" name="wand.length" type="number" step="0.1" />
+      </div>
+    </fieldset>
+
+    <div class="hp-field">
+      <label class="hp-field__label" for="patronus">Patronus</label>
+      <input class="hp-field__control" id="patronus" name="patronus" type="text" />
+    </div>
+
+    <div class="hp-field">
+      <label class="hp-field__label" for="hogwartsStudent">Hogwarts student</label>
+      <input
+        class="hp-field__control"
+        id="hogwartsStudent"
+        name="hogwartsStudent"
+        type="checkbox"
+        [checked]="hogwartsStudent"
+        (change)="toggleHogwartsStudent($event.target.checked)"
+      />
+    </div>
+
+    <div class="hp-field">
+      <label class="hp-field__label" for="hogwartsStaff">Hogwarts staff</label>
+      <input
+        class="hp-field__control"
+        id="hogwartsStaff"
+        name="hogwartsStaff"
+        type="checkbox"
+        [checked]="hogwartsStaff"
+        (change)="toggleHogwartsStaff($event.target.checked)"
+      />
+    </div>
+
+    <div class="hp-field">
+      <label class="hp-field__label" for="actor">Actor</label>
+      <input class="hp-field__control" id="actor" name="actor" type="text" [(ngModel)]="actor" />
+    </div>
+
+    <div class="hp-field">
+      <label class="hp-field__label" for="alternate_actors">Alternate actors</label>
+      <textarea class="hp-field__control" id="alternate_actors" name="alternate_actors" rows="2" placeholder="Comma-separated"></textarea>
+    </div>
+
+    <div class="hp-field">
+      <label class="hp-field__label" for="alive">Alive</label>
+      <input class="hp-field__control" id="alive" name="alive" type="checkbox" />
+    </div>
+
+    <div class="hp-field">
+      <label class="hp-field__label" for="image">Image URL</label>
+      <input class="hp-field__control" id="image" name="image" type="url" />
+    </div>
+
+    <button class="hp-add-character__submit" type="submit" [disabled]="!formValid">Submit</button>
+  </form>
+</section>

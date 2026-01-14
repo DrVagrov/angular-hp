@@ -1,0 +1,32 @@
+<section class="hp-spells">
+  <!-- Header -->
+  <header class="hp-spells__header">
+    <div class="hp-spells__title">
+      <h1>Harry Potter — Spells</h1>
+      <p class="hp-spells__subtitle">
+        Une galerie immersive : tous les sorts du Wizarding World.
+      </p>
+    </div>
+  </header>
+
+  <!-- Spells grid -->
+  @if (spells().length === 0){
+    <div class="hp-empty">
+      <div class="hp-empty__orb" aria-hidden="true"></div>
+      <div class="hp-empty__icon" aria-hidden="true">✨</div>
+      <div class="hp-empty__title">Aucun spell trouvé</div>
+      <div class="hp-empty__desc">Vérifie ton appel API ou tes filtres.</div>
+    </div>
+  } @else{
+    @for(spell of spells();track spell.id)
+    {
+            <article class="hp-card">
+                <!-- Card body -->
+                <div class="hp-card__body">
+                    <h2 class="hp-card__name">{{ spell.name }}</h2>
+                    <p class="hp-card__desc">{{ spell.description }}</p>
+                </div>
+            </article>
+    }
+}
+</section>

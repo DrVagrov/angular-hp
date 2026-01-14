@@ -1,0 +1,105 @@
+<section class="hp-character-detail">
+  <header class="hp-character-detail__header">
+    <h1 class="hp-character-detail__name">{{ character()![0].name | suffix: 'Profile' }}</h1>
+    <div class="hp-character-detail__meta">
+      <span
+        class="hp-house"
+        [class.hp-house--none]="!character()![0].house"
+      >
+        <span class="hp-house__dot" aria-hidden="true"></span>
+        {{ character()![0].house || 'Unknown House' }}
+      </span>
+
+      <span
+        class="hp-life"
+        [class.hp-life--alive]="character()![0].alive"
+        [class.hp-life--dead]="!character()![0].alive"
+      >
+        {{ character()![0].alive ? 'Alive' : 'Deceased' }}
+      </span>
+    </div>
+  </header>
+
+  <div class="hp-character-detail__main">
+    <!-- Portrait -->
+    <div class="hp-character-detail__portrait" appHoverCard>
+      @if (character()![0].image) {
+        <img
+          [src]="character()![0].image"
+          [alt]="character()![0].name"
+          class="hp-character-detail__img"
+        />
+      } @else {
+        <img
+          [src]="imge"
+          [alt]="character()![0].name"
+          class="hp-character-detail__img"
+        />
+      }
+    </div>
+
+    <!-- Info détaillée -->
+    <div class="hp-character-detail__info">
+      <div class="hp-row">
+        <span class="hp-k">Actor</span>
+        <span class="hp-v">{{ character()![0].actor || '—' }}</span>
+      </div>
+
+      <div class="hp-row">
+        <span class="hp-k">Ancestry</span>
+        <span class="hp-v">{{ character()![0].ancestry || '—' }}</span>
+      </div>
+
+      <div class="hp-row">
+        <span class="hp-k">Eyes / Hair</span>
+        <span class="hp-v">{{ character()![0].eyeColour || '—' }} / {{ character()![0].hairColour || '—' }}</span>
+      </div>
+
+      <div class="hp-row">
+        <span class="hp-k">Birth</span>
+        <span class="hp-v">
+          @if (character()![0].dateOfBirth) {
+            {{ character()![0].dateOfBirth }}
+          } @else if (character()![0].yearOfBirth) {
+            {{ character()![0].yearOfBirth }}
+          } @else {
+            —
+          }
+        </span>
+      </div>
+
+      <div class="hp-row">
+        <span class="hp-k">Patronus</span>
+        <span class="hp-v">{{ character()![0].patronus || '—' }}</span>
+      </div>
+
+      <!-- Baguette -->
+      <div class="hp-wand">
+        <div class="hp-wand__icon" aria-hidden="true">🪄</div>
+        <div class="hp-wand__text">
+          <div class="hp-wand__title">Wand</div>
+          @if (character()![0].wand?.wood || character()![0].wand?.core || character()![0].wand?.length) {
+            <div class="hp-wand__desc">
+              {{ character()![0].wand?.wood || '—' }}
+              <span class="hp-sep" aria-hidden="true">•</span>
+              {{ character()![0].wand?.core || '—' }}
+              <span class="hp-sep" aria-hidden="true">•</span>
+              @if (character()![0].wand?.length) { {{ character()![0].wand.length }} } @else { — } in
+            </div>
+          } @else {
+            <div class="hp-wand__desc">—</div>
+          }
+        </div>
+      </div>
+
+      <!-- Statuts / Chips -->
+      <div class="hp-chips">
+        <span class="hp-chip">{{ character()![0].species }}</span>
+        <span class="hp-chip">{{ character()![0].gender }}</span>
+        @if (character()![0].hogwartsStudent) { <span class="hp-chip hp-chip--accent">Student</span> }
+        @if (character()![0].hogwartsStaff) { <span class="hp-chip hp-chip--accent">Staff</span> }
+        @if (character()![0].wizard) { <span class="hp-chip hp-chip--accent">Wizard</span> }
+      </div>
+    </div>
+  </div>
+</section>

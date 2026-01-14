@@ -1,0 +1,44 @@
+/* Add character collapse */
+.hp-characters__add {
+  margin-top: 24px;
+  border-radius: 16px;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  background: rgba(21, 26, 44, 0.75);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+
+  &-summary {
+    list-style: none;
+    cursor: pointer;
+    padding: 16px 20px;
+    font-weight: 800;
+    letter-spacing: 0.2px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  &-summary::-webkit-details-marker {
+    display: none;
+  }
+
+  &-summary::before {
+    content: '+';
+    font-size: 18px;
+    width: 20px;
+    height: 20px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 6px;
+    background: rgba(0, 0, 0, 0.08);
+  }
+}
+
+.hp-characters__add[open] .hp-characters__add-summary::before {
+  content: '–';
+}
+
+.hp-characters__add > app-add-character {
+  display: block;
+}

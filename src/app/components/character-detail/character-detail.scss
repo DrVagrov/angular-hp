@@ -1,0 +1,94 @@
+.hp-character-detail {
+  display: block;
+  padding: 22px;
+  color: var(--nx-text);
+  min-height: 100%;
+  background:
+    radial-gradient(900px 420px at 18% 0%, rgba(229, 9, 20, 0.14), transparent 60%),
+    radial-gradient(900px 420px at 85% 0%, rgba(255, 255, 255, 0.06), transparent 58%),
+    linear-gradient(180deg, var(--nx-bg), var(--nx-bg-2));
+
+  &__header {
+    margin-bottom: 20px;
+    h1 {
+      font-size: clamp(32px, 4vw, 48px);
+      font-weight: 900;
+      margin: 0 0 6px;
+    }
+
+    &__meta {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+    }
+  }
+
+  &__main {
+    display: flex;
+    gap: 22px;
+
+    @media (max-width: 768px) { flex-direction: column; }
+  }
+
+  &__portrait {
+    flex: 0 0 320px;
+    border-radius: 18px;
+    overflow: hidden;
+    background: #0f0f0f;
+    border: 1px solid var(--nx-stroke-2);
+    box-shadow: 0 26px 120px var(--nx-shadow);
+
+    &__img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+      transform: scale(1.02);
+      transition: transform 420ms var(--nx-ease), filter 420ms var(--nx-ease);
+      filter: contrast(1.05) saturate(1.05);
+
+      &:hover {
+        transform: scale(1.10);
+        filter: contrast(1.10) saturate(1.10);
+      }
+    }
+
+    &__img--fallback {
+      display: grid;
+      place-items: center;
+      background:
+        radial-gradient(520px 260px at 30% 30%, rgba(229, 9, 20, 0.18), transparent 65%),
+        linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(0, 0, 0, 0.35));
+
+      .hp-character-detail__fallbackGlyph { font-size: 44px; font-weight: 900; opacity: 0.9; }
+      .hp-character-detail__fallbackText { margin-top: 6px; font-weight: 900; opacity: 0.7; }
+    }
+  }
+
+  &__info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .hp-row { 
+    display: grid; 
+    grid-template-columns: 140px 1fr; 
+    gap: 10px;
+    padding: 10px; 
+    border-radius: 14px; 
+    background: rgba(255, 255, 255, 0.04); 
+  }
+
+  .hp-k { font-weight: 950; color: rgba(255,255,255,0.7); }
+  .hp-v { font-weight: 750; color: rgba(255,255,255,0.92); }
+
+  .hp-wand { display: flex; align-items: center; gap: 12px; margin-top: 12px; }
+  .hp-wand__icon { font-size: 28px; }
+  .hp-wand__text { display: flex; flex-direction: column; }
+  .hp-wand__title { font-weight: 900; margin-bottom: 2px; }
+  .hp-wand__desc { font-weight: 750; }
+
+  .hp-chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+}

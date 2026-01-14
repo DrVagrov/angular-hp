@@ -1,0 +1,311 @@
+:host {
+  display: block;
+}
+
+/* Page */
+.hp-add-character {
+  --nx-bg: #141414;
+  --nx-bg-2: #0b0b0b;
+  --nx-surface: rgba(255, 255, 255, 0.06);
+  --nx-stroke: rgba(255, 255, 255, 0.10);
+  --nx-text: rgba(255, 255, 255, 0.92);
+  --nx-muted: rgba(255, 255, 255, 0.65);
+  --nx-red: #e50914;
+  --nx-red-2: rgba(229, 9, 20, 0.25);
+  --nx-ease: cubic-bezier(0.2, 0.9, 0.2, 1);
+
+  min-height: 100%;
+  padding: 16px;
+  color: var(--nx-text);
+  font-family: 'Times New Roman', Times, serif;
+
+  background:
+    radial-gradient(900px 420px at 20% 0%, rgba(229, 9, 20, 0.12), transparent 60%),
+    linear-gradient(180deg, var(--nx-bg), var(--nx-bg-2));
+
+  &__header {
+    margin-bottom: 18px;
+
+    h1 {
+      margin: 0;
+      font-size: clamp(22px, 2.4vw, 32px);
+      font-weight: 950;
+      letter-spacing: 0.3px;
+      font-family: 'Cinzel', 'Times New Roman', serif;
+    }
+
+    p {
+      margin-top: 4px;
+      max-width: 70ch;
+      color: var(--nx-muted);
+      line-height: 1.55;
+      font-weight: 650;
+    }
+  }
+
+  &__form {
+    max-width: 760px;
+    display: grid;
+    gap: 12px;
+  }
+
+  &__submit {
+    width: fit-content;
+    padding: 8px 16px;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.08);
+    color: var(--nx-text);
+    font-weight: 800;
+    letter-spacing: 0.2px;
+    cursor: pointer;
+    transition:
+      transform 160ms var(--nx-ease),
+      box-shadow 160ms var(--nx-ease),
+      background 160ms var(--nx-ease),
+      border-color 160ms var(--nx-ease);
+
+    &:not(:disabled) {
+      background: rgba(229, 9, 20, 0.32);
+      border-color: rgba(229, 9, 20, 0.65);
+      box-shadow: 0 10px 30px rgba(229, 9, 20, 0.18);
+    }
+
+    &:hover:not(:disabled) {
+      background: rgba(229, 9, 20, 0.45);
+      border-color: rgba(229, 9, 20, 0.85);
+      box-shadow: 0 12px 34px rgba(229, 9, 20, 0.26);
+      transform: translateY(-1px);
+    }
+
+    &:active:not(:disabled) {
+      transform: translateY(0);
+    }
+
+    &:disabled {
+      cursor: not-allowed;
+      opacity: 0.5;
+      border-color: rgba(255, 255, 255, 0.12);
+      background: rgba(255, 255, 255, 0.04);
+    }
+  }
+}
+
+/* Field */
+.hp-field {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+
+  &__label {
+    font-size: 11px;
+    font-weight: 900;
+    letter-spacing: 0.35px;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.75);
+  }
+
+  &__control {
+    width: 100%;
+    padding: 9px 12px;
+    border-radius: 12px;
+
+    border: 1px solid var(--nx-stroke);
+    background: rgba(0, 0, 0, 0.45);
+    color: var(--nx-text);
+
+    font-size: 13px;
+    font-weight: 700;
+    line-height: 1.4;
+
+    transition:
+      border-color 200ms var(--nx-ease),
+      box-shadow 200ms var(--nx-ease),
+      background 200ms var(--nx-ease);
+
+    &::placeholder {
+      color: rgba(255, 255, 255, 0.45);
+    }
+
+    &:focus {
+      outline: none;
+      border-color: rgba(229, 9, 20, 0.55);
+      box-shadow:
+        0 0 0 1px rgba(229, 9, 20, 0.35),
+        0 10px 40px rgba(229, 9, 20, 0.18);
+      background: rgba(0, 0, 0, 0.55);
+    }
+  }
+
+  /* Checkbox */
+  input[type="checkbox"].hp-field__control {
+    width: 16px;
+    height: 16px;
+    padding: 0;
+    accent-color: var(--nx-red);
+    cursor: pointer;
+  }
+}
+
+/* Fieldset (Wand) */
+.hp-fieldset {
+  margin-top: 8px;
+  padding: 14px 14px;
+  border-radius: 16px;
+
+  border: 1px solid rgba(229, 9, 20, 0.35);
+  background:
+    linear-gradient(
+      180deg,
+      rgba(229, 9, 20, 0.12),
+      rgba(0, 0, 0, 0.45)
+    );
+
+  display: grid;
+  gap: 12px;
+
+  &__legend {
+    padding: 0 10px;
+    font-weight: 950;
+    letter-spacing: 0.4px;
+    text-transform: uppercase;
+    font-size: 11px;
+    color: rgba(255, 255, 255, 0.85);
+  }
+}
+
+/* Textarea */
+textarea.hp-field__control {
+  resize: vertical;
+  min-height: 60px;
+}
+
+/* Select */
+select.hp-field__control {
+  appearance: none;
+  background-color: rgba(0, 0, 0, 0.45);
+  background-image:
+    linear-gradient(45deg, transparent 50%, rgba(255,255,255,0.6) 50%),
+    linear-gradient(135deg, rgba(255,255,255,0.6) 50%, transparent 50%);
+  background-position:
+    calc(100% - 20px) calc(1em + 2px),
+    calc(100% - 15px) calc(1em + 2px);
+  background-size: 5px 5px;
+  background-repeat: no-repeat;
+}
+
+select.hp-field__control option {
+  background-color: #0b0b0b;
+  color: var(--nx-text);
+}
+
+/* Responsive */
+@media (max-width: 575px) {
+  .hp-add-character {
+    padding: 12px;
+  }
+
+  .hp-add-character__form {
+    gap: 10px;
+  }
+}
+/* Checkbox -> Toggle slider */
+.hp-field {
+  /* Si tu veux aligner label + toggle sur une ligne */
+  &:has(input[type="checkbox"].hp-field__control) {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+
+    .hp-field__label {
+      margin: 0;
+      text-transform: none;
+      letter-spacing: 0.2px;
+      font-size: 13px;
+      font-weight: 850;
+      color: rgba(255, 255, 255, 0.82);
+    }
+  }
+
+  input[type="checkbox"].hp-field__control {
+    /* Reset checkbox default */
+    -webkit-appearance: none;
+    appearance: none;
+
+    width: 44px;
+    height: 24px;
+    border-radius: 999px;
+    padding: 0;
+    margin: 0;
+
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    background: rgba(255, 255, 255, 0.08);
+
+    position: relative;
+    cursor: pointer;
+    flex-shrink: 0;
+
+    transition:
+      background 220ms var(--nx-ease),
+      border-color 220ms var(--nx-ease),
+      box-shadow 220ms var(--nx-ease);
+
+    /* Thumb */
+    &::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 3px;
+      transform: translateY(-50%);
+
+      width: 18px;
+      height: 18px;
+      border-radius: 999px;
+
+      background: rgba(255, 255, 255, 0.92);
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.55);
+
+      transition: transform 220ms var(--nx-ease);
+    }
+
+    /* ON */
+    &:checked {
+      background: rgba(229, 9, 20, 0.28);
+      border-color: rgba(229, 9, 20, 0.55);
+      box-shadow: 0 14px 50px rgba(229, 9, 20, 0.16);
+
+      &::after {
+        transform: translate(18px, -50%);
+      }
+    }
+
+    /* Focus keyboard */
+    &:focus-visible {
+      outline: none;
+      box-shadow:
+        0 0 0 2px rgba(229, 9, 20, 0.28),
+        0 16px 60px rgba(229, 9, 20, 0.14);
+      border-color: rgba(229, 9, 20, 0.65);
+    }
+
+    /* Disabled (si un jour tu l’utilises) */
+    &:disabled {
+      opacity: 0.55;
+      cursor: not-allowed;
+    }
+  }
+}
+
+/* Fallback si le navigateur ne supporte pas :has() */
+@supports not selector(:has(*)) {
+  .hp-field input[type="checkbox"].hp-field__control {
+    margin-top: 6px;
+  }
+}
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .hp-field__control {
+    transition: none !important;
+  }
+}

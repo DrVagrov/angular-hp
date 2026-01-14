@@ -1,0 +1,149 @@
+:host {
+  display: block;
+}
+
+/* Page */
+.hp-houses {
+  min-height: 100%;
+  padding: 22px;
+  color: rgba(255, 255, 255, 0.92);
+
+  background:
+    radial-gradient(900px 420px at 20% 0%, rgba(229, 9, 20, 0.12), transparent 60%),
+    radial-gradient(900px 420px at 80% 0%, rgba(255, 255, 255, 0.06), transparent 58%),
+    linear-gradient(180deg, #141414, #0b0b0b);
+
+  &__header {
+    text-align: center;
+    margin-bottom: 36px;
+
+    h1 {
+      font-size: clamp(32px, 4vw, 48px);
+      font-weight: 900;
+      margin-bottom: 8px;
+    }
+
+    .hp-houses__subtitle {
+      color: rgba(255, 255, 255, 0.68);
+      font-size: 16px;
+      line-height: 1.5;
+    }
+  }
+
+  &__grid {
+    display: grid;
+    gap: 24px;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+/* House card */
+.hp-house-card {
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(0, 0, 0, 0.35);
+  box-shadow: 0 26px 120px rgba(0, 0, 0, 0.65);
+  transform: translateZ(0);
+  transition: transform 240ms ease, box-shadow 240ms ease, border-color 240ms ease;
+
+  cursor: pointer;
+
+  &__veil {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background:
+      linear-gradient(180deg, rgba(0,0,0,0.05), rgba(0,0,0,0.8)),
+      radial-gradient(520px 240px at 25% 20%, rgba(255,255,255,0.12), transparent 68%);
+  }
+
+  &__content {
+    position: relative;
+    z-index: 1;
+    padding: 28px 16px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+  }
+
+  &__sigil {
+    font-size: 64px;
+    display: block;
+  }
+
+  h2 {
+    margin: 0;
+    font-weight: 900;
+    font-size: 24px;
+    letter-spacing: 0.3px;
+    text-transform: uppercase;
+  }
+
+  p {
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.72);
+    line-height: 1.4;
+  }
+
+  .hp-btn--house {
+    margin-top: 12px;
+    padding: 10px 16px;
+    border-radius: 999px;
+    border: 1px solid rgba(255,255,255,0.1);
+    background: rgba(0,0,0,0.35);
+    color: rgba(255,255,255,0.92);
+    font-weight: 900;
+    letter-spacing: 0.2px;
+    transition: all 240ms ease;
+
+    &:hover {
+      background: rgba(255,255,255,0.08);
+      box-shadow: 0 10px 40px rgba(255,255,255,0.12);
+    }
+  }
+
+  &:hover {
+    transform: translateY(-6px);
+    border-color: rgba(255,255,255,0.16);
+    box-shadow: 0 36px 160px rgba(0,0,0,0.78);
+  }
+
+  /* House colors */
+  &--gryffindor:hover {
+    box-shadow: 0 36px 160px rgba(174, 0, 1, 0.7);
+    border-color: #ae0001;
+  }
+
+  &--slytherin:hover {
+    box-shadow: 0 36px 160px rgba(26, 71, 42, 0.7);
+    border-color: #1a472a;
+  }
+
+  &--ravenclaw:hover {
+    box-shadow: 0 36px 160px rgba(14, 26, 64, 0.7);
+    border-color: #0e1a40;
+  }
+
+  &--hufflepuff:hover {
+    box-shadow: 0 36px 160px rgba(236, 185, 57, 0.7);
+    border-color: #ecb939;
+  }
+}
+
+/* Responsive */
+@media (max-width: 991px) {
+  .hp-houses__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 575px) {
+  .hp-houses__grid {
+    grid-template-columns: 1fr;
+  }
+}

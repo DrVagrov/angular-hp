@@ -1,0 +1,214 @@
+/* spells.component.scss — Netflix-like dark + magic accent */
+
+:host {
+  display: block;
+}
+
+/* Page */
+.hp-spells {
+  /* Tokens locaux (alignés avec characters) */
+  --nx-bg: #141414;
+  --nx-bg-2: #0b0b0b;
+  --nx-surface: rgba(255, 255, 255, 0.06);
+  --nx-stroke: rgba(255, 255, 255, 0.10);
+  --nx-stroke-2: rgba(255, 255, 255, 0.06);
+  --nx-text: rgba(255, 255, 255, 0.92);
+  --nx-muted: rgba(255, 255, 255, 0.68);
+  --nx-red: #e50914;
+  --nx-red-2: rgba(229, 9, 20, 0.28);
+  --nx-shadow: rgba(0, 0, 0, 0.65);
+  --nx-ease: cubic-bezier(0.2, 0.9, 0.2, 1);
+
+  min-height: 100%;
+  padding: 22px;
+  color: var(--nx-text);
+
+  background:
+    radial-gradient(900px 420px at 20% 0%, rgba(229, 9, 20, 0.14), transparent 60%),
+    radial-gradient(700px 360px at 85% 10%, rgba(255, 255, 255, 0.06), transparent 60%),
+    linear-gradient(180deg, var(--nx-bg), var(--nx-bg-2));
+
+  /* Header */
+  &__header {
+    margin-bottom: 22px;
+  }
+
+  &__title {
+    h1 {
+      margin: 0;
+      font-size: clamp(28px, 3vw, 44px);
+      font-weight: 950;
+      letter-spacing: 0.3px;
+    }
+  }
+
+  &__subtitle {
+    margin-top: 8px;
+    max-width: 70ch;
+    line-height: 1.6;
+    color: var(--nx-muted);
+    font-weight: 650;
+  }
+}
+
+/* Grid (spells) */
+.hp-spells {
+  article {
+    cursor: pointer;
+  }
+
+  & > article,
+  & > .hp-card {
+    margin-bottom: 18px;
+  }
+
+  /* Layout grid automatique */
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
+
+/* Card */
+.hp-card {
+  position: relative;
+  border-radius: 18px;
+  overflow: hidden;
+
+  border: 1px solid var(--nx-stroke-2);
+  background: rgba(0, 0, 0, 0.38);
+  box-shadow: 0 26px 120px var(--nx-shadow);
+
+  transition:
+    transform 240ms var(--nx-ease),
+    box-shadow 240ms var(--nx-ease),
+    border-color 240ms var(--nx-ease);
+
+  &:hover {
+    transform: translateY(-6px);
+    border-color: rgba(255, 255, 255, 0.14);
+    box-shadow: 0 36px 160px rgba(0, 0, 0, 0.8);
+  }
+
+  /* Accent magique au hover */
+  &::before {
+    content: "";
+    position: absolute;
+    inset: -2px;
+    border-radius: 20px;
+    opacity: 0;
+    pointer-events: none;
+
+    background:
+      radial-gradient(620px 260px at 20% 0%, rgba(229, 9, 20, 0.35), transparent 60%),
+      radial-gradient(420px 200px at 90% 10%, rgba(255, 255, 255, 0.12), transparent 60%);
+    mix-blend-mode: screen;
+
+    transition: opacity 240ms var(--nx-ease);
+  }
+
+  &:hover::before {
+    opacity: 1;
+  }
+
+  /* Body */
+  &__body {
+    padding: 18px 16px 20px;
+    background:
+      linear-gradient(180deg, rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0.45));
+  }
+
+  &__name {
+    margin: 0 0 10px;
+    font-size: 18px;
+    font-weight: 950;
+    letter-spacing: 0.25px;
+    line-height: 1.3;
+
+    text-shadow: 0 18px 60px rgba(0, 0, 0, 0.75);
+  }
+
+  &__desc {
+    margin: 0;
+    font-size: 14px;
+    line-height: 1.55;
+    color: rgba(255, 255, 255, 0.78);
+    font-weight: 650;
+  }
+}
+
+/* Empty state */
+.hp-empty {
+  grid-column: 1 / -1;
+
+  padding: 64px 20px;
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(0, 0, 0, 0.38);
+  text-align: center;
+
+  position: relative;
+  overflow: hidden;
+
+  &__orb {
+    position: absolute;
+    inset: auto;
+    width: 280px;
+    height: 280px;
+    top: -80px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 50%;
+
+    background:
+      radial-gradient(circle at 30% 30%, rgba(229, 9, 20, 0.35), transparent 60%);
+    filter: blur(40px);
+    opacity: 0.7;
+  }
+
+  &__icon {
+    font-size: 48px;
+    margin-bottom: 12px;
+    position: relative;
+    z-index: 1;
+  }
+
+  &__title {
+    font-size: 18px;
+    font-weight: 950;
+    letter-spacing: 0.3px;
+    position: relative;
+    z-index: 1;
+  }
+
+  &__desc {
+    margin-top: 6px;
+    color: rgba(255, 255, 255, 0.7);
+    font-weight: 650;
+    position: relative;
+    z-index: 1;
+  }
+}
+
+/* Responsive */
+@media (max-width: 991px) {
+  .hp-spells {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 575px) {
+  .hp-spells {
+    padding: 16px;
+    grid-template-columns: 1fr;
+  }
+
+  .hp-spells__header {
+    margin-bottom: 16px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hp-card {
+    transition: none !important;
+  }
+}

@@ -1,0 +1,70 @@
+<section class="hp-houses">
+  <header class="hp-houses__header">
+    <h1>{{ 'Choose Your House' | suffix: 'Now' }}</h1>
+    <p class="hp-houses__subtitle">
+      The Sorting Hat awaits. Choose wisely.
+    </p>
+  </header>
+
+  <div class="hp-houses__grid">
+    <!-- Gryffindor -->
+    <article
+      class="hp-house-card hp-house-card--gryffindor"
+      appHoverCard
+      (click)="goToHouseDetail('gryffindor')"
+    >
+      <div class="hp-house-card__veil"></div>
+      <div class="hp-house-card__content">
+        <span class="hp-house-card__sigil">🦁</span>
+        <h2>{{ 'Gryffindor' | suffix: 'House' }}</h2>
+        <p>Courage, bravery and determination.</p>
+        <span class="hp-btn hp-btn--house">Select</span>
+      </div>
+    </article>
+
+    <!-- Slytherin -->
+    <article
+      class="hp-house-card hp-house-card--slytherin"
+      appHoverCard
+      (click)="goToHouseDetail('slytherin')"
+    >
+      <div class="hp-house-card__veil"></div>
+      <div class="hp-house-card__content">
+        <span class="hp-house-card__sigil">🐍</span>
+        <h2>{{ 'Slytherin' | suffix: 'House' }}</h2>
+        <p>Ambition, cunning and resourcefulness.</p>
+        <span class="hp-btn hp-btn--house">Select</span>
+      </div>
+    </article>
+
+    <!-- Ravenclaw -->
+    <article
+      class="hp-house-card hp-house-card--ravenclaw"
+      appHoverCard
+      (click)="goToHouseDetail('ravenclaw')"
+    >
+      <div class="hp-house-card__veil"></div>
+      <div class="hp-house-card__content">
+        <span class="hp-house-card__sigil">🦅</span>
+        <h2>{{ 'Ravenclaw' | suffix: 'House' }}</h2>
+        <p>Intelligence, wisdom and wit.</p>
+        <span class="hp-btn hp-btn--house">Select</span>
+      </div>
+    </article>
+
+    <!-- Hufflepuff -->
+    <article
+      class="hp-house-card hp-house-card--hufflepuff"
+      appHoverCard
+      (click)="goToHouseDetail('hufflepuff')"
+    >
+      <div class="hp-house-card__veil"></div>
+      <div class="hp-house-card__content">
+        <span class="hp-house-card__sigil">🦡</span>
+        <h2>{{ 'Hufflepuff' | suffix: 'House' }}</h2>
+        <p>Loyalty, patience and hard work.</p>
+        <span class="hp-btn hp-btn--house">Select</span>
+      </div>
+    </article>
+  </div>
+</section>
