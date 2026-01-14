@@ -29,7 +29,7 @@
     <div class="hp-grid">
       @for (character of staff(); track character.id) {
         <article
-          (click)="goToCharacterDetail(character.id)"
+          (click)="goToCharacterDetail(character.id, character.house)"
           (mouseenter)="playHoverSound()"
           class="hp-card"
           [class.hp-card--gryffindor]="character.house === 'Gryffindor'"
